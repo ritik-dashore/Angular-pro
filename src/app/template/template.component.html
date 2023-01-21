@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-6 m-auto">
+        <form (ngSubmit)="login(myform)" #myform="ngForm">
+            <div class="mb-3">
+                <label for="username" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="username" ngModel aria-describedby="emailHelp" name="username" required>
+                <div id="userhelp" *ngIf="!myform.control.get('username')?.valid && myform.control.get('username')?.touched" class="text-danger">Please enter user name</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email" email ngModel aria-describedby="emailHelp" required>
+                <div id="emailHelp" class="text-danger" *ngIf="!myform.control.get('email')?.valid && myform.control.get('email')?.touched">Please enter email</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="pass" ngModel required>
+                <div id="emailHelp" *ngIf="!myform.control.get('pass')?.valid && myform.control.get('pass')?.touched" class="text-danger">Please enter password</div>
+            </div>
+            <div class="mb-3 form-check" *ngFor="let gender of genders">
+                <input type="radio" class="form-check-input" id="{{gender.id}}" value="{{gender.value}}" ngModel name="gender" required>
+                <label class="form-check-label" for="{{gender.id}}">{{gender.value}}</label>
+            </div>
+            <button type="submit" [disabled]="myform.valid" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-6">
+        <div class="userDetail">
+            <p>Name : {{username}}</p>
+            <p>Email : {{email}}</p>
+            <p>password : {{pass}}</p>
+            <p>Gender : {{gender}}</p>
+        </div>
+    </div>
+</div>
