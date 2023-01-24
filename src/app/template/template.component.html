@@ -20,15 +20,51 @@
                 <input type="radio" class="form-check-input" id="{{gender.id}}" value="{{gender.value}}" ngModel name="gender" required>
                 <label class="form-check-label" for="{{gender.id}}">{{gender.value}}</label>
             </div>
-            <button type="submit" [disabled]="myform.valid" class="btn btn-primary">Submit</button>
+            <button type="submit" [disabled]="! myform.valid" class="btn btn-primary">Submit</button>
+            <button class="btn btn-success" (click)="call()">custom Service</button>
+            <button class="btn btn-success" (click)="ngSrv()">Angular Service</button>
         </form>
     </div>
     <div class="col-6">
-        <div class="userDetail">
-            <p>Name : {{username}}</p>
-            <p>Email : {{email}}</p>
-            <p>password : {{pass}}</p>
-            <p>Gender : {{gender}}</p>
-        </div>
+        <h3>Service Data</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">password</th>
+                <th scope="col">Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let userData of userDetails">
+                <th scope="row">1</th>
+                <td>{{userData.name}}</td>
+                <td>{{userData.email}}</td>
+                <td>{{userData.pass}}</td>
+                <td>{{userData.gender}}</td>
+              </tr>
+            </tbody>
+          </table>
+          <h3>Form Data</h3>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">password</th>
+                <th scope="col">Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>{{username}}</td>
+                <td>{{email}}</td>
+                <td>{{pass}}</td>
+                <td>{{gender}}</td>
+              </tr>
+            </tbody>
+          </table>
     </div>
 </div>
